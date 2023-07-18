@@ -3,6 +3,7 @@ package com.vonberg.csrviewer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -42,7 +43,7 @@ class CsrViewerControllerTests {
     }
 
     @Test
-    public void testSubmitCSR() throws Exception {
+    public void testSubmitCsr() throws Exception {
         MockMultipartFile pemUpload = new MockMultipartFile("csr-file", "sample.csr", "application/pkcs10", SampleCsrData.SAMPLE_CSR_WIKIPEDIA.getBytes());
         var response = mockMvc.perform(
                 MockMvcRequestBuilders
