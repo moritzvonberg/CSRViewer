@@ -3,7 +3,6 @@ package com.vonberg.csrviewer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
@@ -55,7 +54,6 @@ class CsrViewerControllerTests {
                 .getResponse()
                 .getContentAsString();
         var document = Jsoup.parse(response);
-        System.out.println(document);
         assertEquals("EN", document.getElementsByAttributeValue("data-testid", "subject-name-value-C").text());
         assertEquals("MD5WITHRSA", document.getElementsByAttributeValue("data-testid", "signature-algorithm").text());
         assertTrue(document.getElementsByAttributeValue("data-testid", "validation-success-notice").size() >= 1);

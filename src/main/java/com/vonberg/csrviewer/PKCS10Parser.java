@@ -31,6 +31,7 @@ import static com.vonberg.csrviewer.PKCS10Parser.ValidationResultState.*;
 
 class PKCS10Parser {
 
+    static final GeneralName[] EMPTY_GENERAL_NAME_ARRAY = new GeneralName[0];
     static Logger logger = LoggerFactory.getLogger(PKCS10Parser.class);
 
     /**
@@ -116,7 +117,7 @@ class PKCS10Parser {
     static GeneralName[] getAltNames(PKCS10CertificationRequest request){
         var requestedExtensions = request.getRequestedExtensions();
         if (requestedExtensions == null){
-            return new GeneralName[0];
+            return EMPTY_GENERAL_NAME_ARRAY;
         }
         var altNamesExtension = requestedExtensions.getExtension(Extension.subjectAlternativeName);
         return GeneralNames.getInstance(altNamesExtension.getParsedValue()).getNames();
