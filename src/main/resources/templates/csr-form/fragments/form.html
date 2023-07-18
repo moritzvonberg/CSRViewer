@@ -1,0 +1,36 @@
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>CSR Request Parser</title>
+</head>
+<body>
+    <section layout:fragment="form" class="p-5">
+        <div class="container py-3 bg-tertiary rounded-3">
+            <h2 class="h2">CSR Request Parser</h2>
+            <form id="csr" hx-encoding="multipart/form-data" hx-post="/submit-csr" hx-target="#response">
+                <div class="row mb-2">
+                    <div class="col">
+                        <label for="file-upload" class="form-label">Upload PKCS#10 certificate signing request as file</label>
+                        <br>
+                        <input type="file" class="form-control-file" name="csr-file" id="file-upload">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-primary" value="Submit CSR for checking">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </section>
+    <section layout:fragment="response">
+        <div class="container my-5" id="response">
+            <p class="lead">Response will appear here.</p>
+        </div>
+    </section>
+</body>
+</html>
+
+

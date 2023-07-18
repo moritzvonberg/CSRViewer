@@ -1,0 +1,39 @@
+<section layout:fragment="response">
+    <div class="container my-5" id="response">
+        <h5>Subject Name Components</h5>
+        <div class="row" id="subject-name">
+            <div class="row" th:each="rdn : ${rDNs}">
+                <div class="row" th:each="pair : ${rdn}">
+                    <div class="col">
+                        <p th:text="${pair.getKey()}" th:data-testid="|subject-name-key-${pair.getKey()}|"></p>
+                    </div>
+                    <div class="col">
+                        <p th:text="${pair.getValue()}" th:data-testid="|subject-name-value-${pair.getKey()}|"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5>Subject Altnames</h5>
+        <div class="row">
+            <div class="col">
+                <ul th:each="altName : ${subjectAltNames}" th:data-testid="alt-names-list">
+                    <li th:text="${altName.getName()}"></li>
+                </ul>
+            </div>
+        </div>
+        <h5>Signature</h5>
+        <div class="row">
+            <div class="col">Signature Algorithm</div>
+            <div class="col" id="signature-algorithm" th:text="${signatureAlgorithm}" th:data-testid="signature-algorithm">SIGNATURE ALGO PLACEHOLDER</div>
+        </div>
+        <div class="row">
+            <div class="col">Validity</div>
+            <div class="col" th:if="${validationState == T(com.vonberg.csrviewer.PKCS10Parser.ValidationResultState).VALID}" th:data-testid="validation-success-notice">
+                <p class="text-success">✅ Signature is valid ✅</p>
+            </div>
+            <div class="col" th:unless="${validationState == T(com.vonberg.csrviewer.PKCS10Parser.ValidationResultState).VALID}" th:data-testid="validation-failure-notice">
+                <p class="text-danger" th:text="|❌ ${validationState.name()} ❌|"></p>
+            </div>
+        </div>
+    </div>
+</section>

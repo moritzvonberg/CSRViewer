@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>CSR Parser App</title>
+  <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">More</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">Features</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">Go</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">Here</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section layout:fragment="form">
+    <p>default layout page content</p>
+  </section>
+  <section layout:fragment="response">
+    <div class="container my-5">
+      <p class="lead">Response Goes Here</p>
+    </div>
+  </section>
+  <script th:src="@{/jquery-3.2.1.slim.min.js}"></script>
+  <script th:src="@{/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/htmx.min.js}"></script>
+  <footer></footer>
+</body>
+</html>
