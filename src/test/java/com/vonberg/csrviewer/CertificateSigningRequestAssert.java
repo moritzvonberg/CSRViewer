@@ -43,7 +43,7 @@ public class CertificateSigningRequestAssert extends AbstractAssert<CertificateS
     public CertificateSigningRequestAssert hasNoAltNames() {
         isNotNull();
         var altNames = PKCS10Parser.getAltNames(actual);
-        if (altNames != null) {
+        if (altNames.length > 0) {
             failWithMessage("Expected CSR to have no alternative names, but it contained: %s",
                     Arrays.stream(altNames).map(GeneralName::toString).collect(Collectors.joining(", ")));
         }
@@ -53,9 +53,7 @@ public class CertificateSigningRequestAssert extends AbstractAssert<CertificateS
     public CertificateSigningRequestAssert altNamesContainParsedValue(String value) {
         isNotNull();
         var altNames = PKCS10Parser.getAltNames(actual);
-        if (altNames == null) {
-            failWithMessage("Expected CSR to contain alt name %s but it didn't contain any alt names.", value);
-        } else if (Arrays.stream(altNames).noneMatch(x -> x.toString().equals(value))) {
+        if (Arrays.stream(altNames).noneMatch(x -> x.toString().equals(value))) {
             failWithMessage("Expected CSR to contain alt name %s, but it doesn't.", value);
         }
         return this;

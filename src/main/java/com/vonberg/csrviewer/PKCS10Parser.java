@@ -108,7 +108,7 @@ class PKCS10Parser {
     }
 
     /**
-     * Get any alt names in the provided request, if any.
+     * Get alt names in the provided request, if any.
      *
      * @param request the request whose alt names to extract
      * @return an array of alt names contained in the request
